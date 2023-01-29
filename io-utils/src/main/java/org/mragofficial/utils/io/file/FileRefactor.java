@@ -4,13 +4,13 @@ import java.io.InputStream;
 
 public interface FileRefactor {
 
-    void rename(String name);
+    void rename(FileContext context, String name);
 
-    void rename(String name, boolean withExt);
+    void rename(FileContext context, String name, boolean withExt);
 
-    void moveTo(String dir);
+    void moveTo(FileContext context, String dir);
 
-    void appendBits(InputStream input);
+    void appendBits(FileContext context, InputStream input);
 
-    void appendBits(byte[] bits);
+    void appendBits(FileContext context, byte[] bits);
 }

@@ -16,6 +16,11 @@ public class DefaultFileContext implements FileContext, FileRefactor {
         defaultFileRefactor = new DefaultFileRefactor(this);
     }
 
+    @Override
+    public String toString() {
+        return String.format("File(name=%s,size=%s)", filename, size);
+    }
+
     private void analyzeContext() {
         if (context == null) {
             throw new NullPointerException("context is null");
@@ -66,27 +71,27 @@ public class DefaultFileContext implements FileContext, FileRefactor {
     }
 
     @Override
-    public void rename(String name) {
-        defaultFileRefactor.rename(name);
+    public void rename(FileContext context, String name) {
+        defaultFileRefactor.rename(context, name);
     }
 
     @Override
-    public void rename(String name, boolean withExt) {
-        defaultFileRefactor.rename(name, withExt);
+    public void rename(FileContext context, String name, boolean withExt) {
+        defaultFileRefactor.rename(context, name, withExt);
     }
 
     @Override
-    public void moveTo(String dir) {
-        defaultFileRefactor.moveTo(dir);
+    public void moveTo(FileContext context, String dir) {
+        defaultFileRefactor.moveTo(context, dir);
     }
 
     @Override
-    public void appendBits(InputStream input) {
-        defaultFileRefactor.appendBits(input);
+    public void appendBits(FileContext context, InputStream input) {
+        defaultFileRefactor.appendBits(context, input);
     }
 
     @Override
-    public void appendBits(byte[] bits) {
-        defaultFileRefactor.appendBits(bits);
+    public void appendBits(FileContext context, byte[] bits) {
+        defaultFileRefactor.appendBits(context, bits);
     }
 }
